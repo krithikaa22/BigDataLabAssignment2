@@ -1,0 +1,19 @@
+[2024-03-02T13:42:18.436+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: weather.second_function_execute manual__2024-03-02T13:37:44.440434+00:00 [queued]>
+[2024-03-02T13:42:18.451+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: weather.second_function_execute manual__2024-03-02T13:37:44.440434+00:00 [queued]>
+[2024-03-02T13:42:18.452+0000] {taskinstance.py:2193} INFO - Starting attempt 1 of 2
+[2024-03-02T13:42:18.478+0000] {taskinstance.py:2214} INFO - Executing <Task(PythonOperator): second_function_execute> on 2024-03-02 13:37:44.440434+00:00
+[2024-03-02T13:42:18.487+0000] {standard_task_runner.py:60} INFO - Started process 153 to run task
+[2024-03-02T13:42:18.491+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'weather', 'second_function_execute', 'manual__2024-03-02T13:37:44.440434+00:00', '--job-id', '191', '--raw', '--subdir', 'DAGS_FOLDER/task1.py', '--cfg-path', '/tmp/tmpxv6z7my3']
+[2024-03-02T13:42:18.493+0000] {standard_task_runner.py:88} INFO - Job 191: Subtask second_function_execute
+[2024-03-02T13:42:18.578+0000] {task_command.py:423} INFO - Running <TaskInstance: weather.second_function_execute manual__2024-03-02T13:37:44.440434+00:00 [running]> on host 445ef4554cdf
+[2024-03-02T13:42:18.712+0000] {taskinstance.py:2510} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='first_task' AIRFLOW_CTX_DAG_ID='weather' AIRFLOW_CTX_TASK_ID='second_function_execute' AIRFLOW_CTX_EXECUTION_DATE='2024-03-02T13:37:44.440434+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-03-02T13:37:44.440434+00:00'
+[2024-03-02T13:42:18.728+0000] {logging_mixin.py:188} INFO - @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[2024-03-02T13:42:18.737+0000] {logging_mixin.py:188} INFO -      name                         title
+0  Soumil  Full Stack Software Engineer
+1   Nitin  Full Stack Software Engineer
+[2024-03-02T13:42:18.738+0000] {logging_mixin.py:188} INFO - @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[2024-03-02T13:42:18.739+0000] {logging_mixin.py:188} INFO - I am in second_function_execute got value :None from Function 1  
+[2024-03-02T13:42:18.740+0000] {python.py:202} INFO - Done. Returned value was: None
+[2024-03-02T13:42:18.752+0000] {taskinstance.py:1149} INFO - Marking task as SUCCESS. dag_id=weather, task_id=second_function_execute, execution_date=20240302T133744, start_date=20240302T134218, end_date=20240302T134218
+[2024-03-02T13:42:18.786+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2024-03-02T13:42:18.817+0000] {taskinstance.py:3309} INFO - 0 downstream tasks scheduled from follow-on schedule check

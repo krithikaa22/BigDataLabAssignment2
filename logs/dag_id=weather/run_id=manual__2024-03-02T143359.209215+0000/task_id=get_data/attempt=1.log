@@ -1,0 +1,25 @@
+[2024-03-02T14:34:05.799+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: weather.get_data manual__2024-03-02T14:33:59.209215+00:00 [queued]>
+[2024-03-02T14:34:05.812+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: weather.get_data manual__2024-03-02T14:33:59.209215+00:00 [queued]>
+[2024-03-02T14:34:05.813+0000] {taskinstance.py:2193} INFO - Starting attempt 1 of 2
+[2024-03-02T14:34:05.836+0000] {taskinstance.py:2214} INFO - Executing <Task(PythonOperator): get_data> on 2024-03-02 14:33:59.209215+00:00
+[2024-03-02T14:34:05.844+0000] {standard_task_runner.py:60} INFO - Started process 64 to run task
+[2024-03-02T14:34:05.847+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'weather', 'get_data', 'manual__2024-03-02T14:33:59.209215+00:00', '--job-id', '234', '--raw', '--subdir', 'DAGS_FOLDER/task1.py', '--cfg-path', '/tmp/tmpidn9p70k']
+[2024-03-02T14:34:05.848+0000] {standard_task_runner.py:88} INFO - Job 234: Subtask get_data
+[2024-03-02T14:34:05.910+0000] {task_command.py:423} INFO - Running <TaskInstance: weather.get_data manual__2024-03-02T14:33:59.209215+00:00 [running]> on host 0f3679117853
+[2024-03-02T14:34:06.013+0000] {taskinstance.py:2510} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='first_task' AIRFLOW_CTX_DAG_ID='weather' AIRFLOW_CTX_TASK_ID='get_data' AIRFLOW_CTX_EXECUTION_DATE='2024-03-02T14:33:59.209215+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-03-02T14:33:59.209215+00:00'
+[2024-03-02T14:40:07.602+0000] {logging_mixin.py:188} INFO - File Name                                             Modified             Size
+[2024-03-02T14:40:07.603+0000] {logging_mixin.py:188} INFO - 60280099999.csv                                2024-03-02 14:34:55      3698405
+[2024-03-02T14:40:07.604+0000] {logging_mixin.py:188} INFO - 28978099999.csv                                2024-03-02 14:35:07      1439769
+[2024-03-02T14:40:07.605+0000] {logging_mixin.py:188} INFO - 71093499999.csv                                2024-03-02 14:35:25      2342682
+[2024-03-02T14:40:07.606+0000] {logging_mixin.py:188} INFO - 85469099999.csv                                2024-03-02 14:36:45      8281131
+[2024-03-02T14:40:07.606+0000] {logging_mixin.py:188} INFO - 02966099999.csv                                2024-03-02 14:38:35     13410773
+[2024-03-02T14:40:07.608+0000] {logging_mixin.py:188} INFO - 38915099999.csv                                2024-03-02 14:38:47      1582606
+[2024-03-02T14:40:07.608+0000] {logging_mixin.py:188} INFO - 72029304989.csv                                2024-03-02 14:39:30     13352265
+[2024-03-02T14:40:07.609+0000] {logging_mixin.py:188} INFO - 43194099999.csv                                2024-03-02 14:39:59      4027980
+[2024-03-02T14:40:07.609+0000] {logging_mixin.py:188} INFO - 61816099999.csv                                2024-03-02 14:40:04       363195
+[2024-03-02T14:40:07.610+0000] {logging_mixin.py:188} INFO - 48964099999.csv                                2024-03-02 14:40:07       229951
+[2024-03-02T14:40:07.610+0000] {logging_mixin.py:188} INFO - None
+[2024-03-02T14:40:07.622+0000] {python.py:202} INFO - Done. Returned value was: None
+[2024-03-02T14:40:07.642+0000] {taskinstance.py:1149} INFO - Marking task as SUCCESS. dag_id=weather, task_id=get_data, execution_date=20240302T143359, start_date=20240302T143405, end_date=20240302T144007
+[2024-03-02T14:40:07.718+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2024-03-02T14:40:07.748+0000] {taskinstance.py:3309} INFO - 1 downstream tasks scheduled from follow-on schedule check

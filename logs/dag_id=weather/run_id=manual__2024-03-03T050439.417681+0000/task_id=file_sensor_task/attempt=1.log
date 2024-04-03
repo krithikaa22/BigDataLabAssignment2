@@ -1,0 +1,38 @@
+[2024-03-03T05:09:33.290+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: weather.file_sensor_task manual__2024-03-03T05:04:39.417681+00:00 [queued]>
+[2024-03-03T05:09:33.301+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: weather.file_sensor_task manual__2024-03-03T05:04:39.417681+00:00 [queued]>
+[2024-03-03T05:09:33.302+0000] {taskinstance.py:2193} INFO - Starting attempt 1 of 4
+[2024-03-03T05:09:33.346+0000] {taskinstance.py:2214} INFO - Executing <Task(FileSensor): file_sensor_task> on 2024-03-03 05:04:39.417681+00:00
+[2024-03-03T05:09:33.358+0000] {standard_task_runner.py:60} INFO - Started process 149 to run task
+[2024-03-03T05:09:33.361+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'weather', 'file_sensor_task', 'manual__2024-03-03T05:04:39.417681+00:00', '--job-id', '503', '--raw', '--subdir', 'DAGS_FOLDER/task1.py', '--cfg-path', '/tmp/tmppmi_tnfj']
+[2024-03-03T05:09:33.363+0000] {standard_task_runner.py:88} INFO - Job 503: Subtask file_sensor_task
+[2024-03-03T05:09:33.425+0000] {task_command.py:423} INFO - Running <TaskInstance: weather.file_sensor_task manual__2024-03-03T05:04:39.417681+00:00 [running]> on host 6bececbe4ea6
+[2024-03-03T05:09:33.538+0000] {taskinstance.py:2510} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='first_task' AIRFLOW_CTX_DAG_ID='weather' AIRFLOW_CTX_TASK_ID='file_sensor_task' AIRFLOW_CTX_EXECUTION_DATE='2024-03-03T05:04:39.417681+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-03-03T05:04:39.417681+00:00'
+[2024-03-03T05:09:33.564+0000] {taskinstance.py:2728} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 444, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 414, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/sensors/base.py", line 265, in execute
+    raise e
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/sensors/base.py", line 247, in execute
+    poke_return = self.poke(context)
+                  ^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/sensors/filesystem.py", line 63, in poke
+    hook = FSHook(self.fs_conn_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/hooks/filesystem.py", line 64, in __init__
+    conn = self.get_connection(fs_conn_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/hooks/base.py", line 82, in get_connection
+    conn = Connection.get_connection_from_secrets(conn_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/connection.py", line 514, in get_connection_from_secrets
+    raise AirflowNotFoundException(f"The conn_id `{conn_id}` isn't defined")
+airflow.exceptions.AirflowNotFoundException: The conn_id `fs_default` isn't defined
+[2024-03-03T05:09:33.571+0000] {taskinstance.py:1149} INFO - Marking task as UP_FOR_RETRY. dag_id=weather, task_id=file_sensor_task, execution_date=20240303T050439, start_date=20240303T050933, end_date=20240303T050933
+[2024-03-03T05:09:33.590+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 503 for task file_sensor_task (The conn_id `fs_default` isn't defined; 149)
+[2024-03-03T05:09:33.615+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2024-03-03T05:09:33.643+0000] {taskinstance.py:3309} INFO - 0 downstream tasks scheduled from follow-on schedule check

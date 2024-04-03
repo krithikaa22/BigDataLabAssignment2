@@ -1,0 +1,77 @@
+[2024-03-02T14:04:54.386+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: weather.get_data manual__2024-03-02T13:54:10.953563+00:00 [queued]>
+[2024-03-02T14:04:54.398+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: weather.get_data manual__2024-03-02T13:54:10.953563+00:00 [queued]>
+[2024-03-02T14:04:54.399+0000] {taskinstance.py:2193} INFO - Starting attempt 2 of 2
+[2024-03-02T14:04:54.420+0000] {taskinstance.py:2214} INFO - Executing <Task(PythonOperator): get_data> on 2024-03-02 13:54:10.953563+00:00
+[2024-03-02T14:04:54.427+0000] {standard_task_runner.py:60} INFO - Started process 155 to run task
+[2024-03-02T14:04:54.431+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'weather', 'get_data', 'manual__2024-03-02T13:54:10.953563+00:00', '--job-id', '227', '--raw', '--subdir', 'DAGS_FOLDER/task1.py', '--cfg-path', '/tmp/tmpgrht98dd']
+[2024-03-02T14:04:54.432+0000] {standard_task_runner.py:88} INFO - Job 227: Subtask get_data
+[2024-03-02T14:04:54.487+0000] {task_command.py:423} INFO - Running <TaskInstance: weather.get_data manual__2024-03-02T13:54:10.953563+00:00 [running]> on host f71ab1e60659
+[2024-03-02T14:04:54.587+0000] {taskinstance.py:2510} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='first_task' AIRFLOW_CTX_DAG_ID='weather' AIRFLOW_CTX_TASK_ID='get_data' AIRFLOW_CTX_EXECUTION_DATE='2024-03-02T13:54:10.953563+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-03-02T13:54:10.953563+00:00'
+[2024-03-02T14:07:50.761+0000] {taskinstance.py:2728} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/urllib3/response.py", line 710, in _error_catcher
+    yield
+  File "/home/airflow/.local/lib/python3.11/site-packages/urllib3/response.py", line 1076, in read_chunked
+    chunk = self._handle_chunk(amt)
+            ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/urllib3/response.py", line 1027, in _handle_chunk
+    returned_chunk = self._fp._safe_read(self.chunk_left)  # type: ignore[union-attr]
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/http/client.py", line 640, in _safe_read
+    raise IncompleteRead(data, amt-len(data))
+http.client.IncompleteRead: IncompleteRead(0 bytes read, 8096 more expected)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/requests/models.py", line 816, in generate
+    yield from self.raw.stream(chunk_size, decode_content=True)
+  File "/home/airflow/.local/lib/python3.11/site-packages/urllib3/response.py", line 933, in stream
+    yield from self.read_chunked(amt, decode_content=decode_content)
+  File "/home/airflow/.local/lib/python3.11/site-packages/urllib3/response.py", line 1061, in read_chunked
+    with self._error_catcher():
+  File "/usr/local/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/home/airflow/.local/lib/python3.11/site-packages/urllib3/response.py", line 727, in _error_catcher
+    raise ProtocolError(f"Connection broken: {e!r}", e) from e
+urllib3.exceptions.ProtocolError: ('Connection broken: IncompleteRead(0 bytes read, 8096 more expected)', IncompleteRead(0 bytes read, 8096 more expected))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 444, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 414, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 200, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 217, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/task1.py", line 22, in get_data
+    response = requests.get(url)
+               ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/requests/api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/requests/sessions.py", line 747, in send
+    r.content
+  File "/home/airflow/.local/lib/python3.11/site-packages/requests/models.py", line 899, in content
+    self._content = b"".join(self.iter_content(CONTENT_CHUNK_SIZE)) or b""
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/requests/models.py", line 818, in generate
+    raise ChunkedEncodingError(e)
+requests.exceptions.ChunkedEncodingError: ('Connection broken: IncompleteRead(0 bytes read, 8096 more expected)', IncompleteRead(0 bytes read, 8096 more expected))
+[2024-03-02T14:07:50.789+0000] {taskinstance.py:1149} INFO - Marking task as FAILED. dag_id=weather, task_id=get_data, execution_date=20240302T135410, start_date=20240302T140454, end_date=20240302T140750
+[2024-03-02T14:07:50.816+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 227 for task get_data (('Connection broken: IncompleteRead(0 bytes read, 8096 more expected)', IncompleteRead(0 bytes read, 8096 more expected)); 155)
+[2024-03-02T14:07:50.863+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2024-03-02T14:07:50.886+0000] {taskinstance.py:3309} INFO - 0 downstream tasks scheduled from follow-on schedule check

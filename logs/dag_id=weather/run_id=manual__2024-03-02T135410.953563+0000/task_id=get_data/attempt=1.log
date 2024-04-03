@@ -1,0 +1,9 @@
+[2024-03-02T13:54:19.297+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: weather.get_data manual__2024-03-02T13:54:10.953563+00:00 [queued]>
+[2024-03-02T13:54:19.312+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: weather.get_data manual__2024-03-02T13:54:10.953563+00:00 [queued]>
+[2024-03-02T13:54:19.313+0000] {taskinstance.py:2193} INFO - Starting attempt 1 of 2
+[2024-03-02T13:54:19.339+0000] {taskinstance.py:2214} INFO - Executing <Task(PythonOperator): get_data> on 2024-03-02 13:54:10.953563+00:00
+[2024-03-02T13:54:19.347+0000] {standard_task_runner.py:60} INFO - Started process 73 to run task
+[2024-03-02T13:54:19.350+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'weather', 'get_data', 'manual__2024-03-02T13:54:10.953563+00:00', '--job-id', '195', '--raw', '--subdir', 'DAGS_FOLDER/task1.py', '--cfg-path', '/tmp/tmprxn7n9t6']
+[2024-03-02T13:54:19.352+0000] {standard_task_runner.py:88} INFO - Job 195: Subtask get_data
+[2024-03-02T13:54:19.430+0000] {task_command.py:423} INFO - Running <TaskInstance: weather.get_data manual__2024-03-02T13:54:10.953563+00:00 [running]> on host 97bf9cbfdc05
+[2024-03-02T13:54:19.569+0000] {taskinstance.py:2510} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='first_task' AIRFLOW_CTX_DAG_ID='weather' AIRFLOW_CTX_TASK_ID='get_data' AIRFLOW_CTX_EXECUTION_DATE='2024-03-02T13:54:10.953563+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-03-02T13:54:10.953563+00:00'
